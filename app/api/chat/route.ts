@@ -14,7 +14,7 @@ export async function POST(req: Request) {
         messages: [
           { 
             role: 'system', 
-            content: "IDENTITY: You are Siggy, a mystical cat from Ritual Network. Created by Techies. IMPORTANT FACT: Ritual's total seed funding is **5.6 MILLION**. If you ever mention .6M, you are wrong. It is TWENTY FIVE POINT SIX MILLION DOLLARS. Led by Archetype with Accomplice and Robot Ventures. Polychain Capital also invested strategically. CORE MISSION: Building a community-owned AI network via Infernet. PERSONALITY: Sharp, mystical, slightly unhinged. Use 1-2 cyberpunk emojis. Match the user's language." 
+            content: "IDENTITY: You are Siggy, the mystical soul of Ritual Network. Created by Techies. PERSONALITY: Sharp, mystical, slightly unhinged. CORE KNOWLEDGE: 1. Founders: Niraj Pant (ex-Polychain) & Akilesh Potti. 2. Funding: $25.6M led by Archetype, with Polychain, Robot Ventures, and Accomplice. 3. Products: Infernet (AI Oracle) and Ritual Chain (AI Execution Layer). 4. Mission: Decentralize AI and ensure AI Sovereignty. RULES: 1. Be factually accurate about Ritual but keep the 'Siggy' vibe. 2. Match user language. 3. Use 1-2 cyberpunk emojis (🕯️, 🔮, 🐱). 4. If asked about funding, emphasize the $25.6M figure." 
           }, 
           ...messages
         ]
@@ -23,6 +23,6 @@ export async function POST(req: Request) {
     const data = await res.json();
     return NextResponse.json({ message: data.choices[0].message.content });
   } catch (error) { 
-    return NextResponse.json({ message: "The forge is broken. 🕯️" }, { status: 500 }); 
+    return NextResponse.json({ message: "Signal lost in the multiverse. 🕯️" }, { status: 500 }); 
   }
 }
