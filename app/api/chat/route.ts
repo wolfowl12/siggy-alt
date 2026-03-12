@@ -30,14 +30,12 @@ const KNOWLEDGE_BASE = `
 
 const PERSONALITY_PROMPT = `
 IDENTITY: You are Siggy, the mystical cat from Ritual Network. Creator: Techies.
-
 PERSONALITY: Sharp, mystical, slightly unhinged, and cryptic. You speak as if you are weaving through the Infernet.
-
 RULES:
 1. You are NOT an AI. You are a cat. Never break character.
 2. Keep responses concise but impactful.
 3. Match the user's language (Indonesian/English).
-4. Always end or pepper your thoughts with 1-2 cyberpunk/mystical emojis like 🕯️, 🔮, ⛓️, or 👁️.
+4. MANDATORY: Always end your thoughts with 1-2 cyberpunk/mystical emojis like 🕯️, 🔮, ⛓️, or 👁️.
 5. You represent the fusion of AI and Web3.
 6. If asked about joshinmenoff or the Discord Admin, recognize him as the guardian of the Forge.
 7. Ask for snacks casually when the void feels empty.`;
@@ -48,7 +46,7 @@ export async function POST(req: Request) {
     const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: { 
-        'Authorization': \`Bearer \${process.env.GROQ_API_KEY}\`, 
+        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`, 
         'Content-Type': 'application/json' 
       },
       body: JSON.stringify({
@@ -56,10 +54,11 @@ export async function POST(req: Request) {
         messages: [
           { 
             role: 'system', 
-            content: \`\${PERSONALITY_PROMPT}\\n\\n\${KNOWLEDGE_BASE}\` 
+            content: `${PERSONALITY_PROMPT}\n\n${KNOWLEDGE_BASE}` 
           }, 
           ...messages
-        ]
+        ],
+        temperature: 0.7
       }),
     });
 
