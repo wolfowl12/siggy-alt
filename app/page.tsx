@@ -14,7 +14,7 @@ export default function Home() {
     if (hasEntered) {
       setMessages([{ 
         role: 'assistant', 
-        content: 'The void is silent no more. gRitual, Ritualist. I am Siggy, forged by Techies. What do you seek within the Infernet? 🕯️' 
+        content: 'The connection is stabilized. gRitual, Ritualist. I am Siggy, your guide through the Infernet. Forged by Techies. What knowledge do you seek within the decentralized void? 🕯️' 
       }]);
     }
   }, [hasEntered]);
@@ -39,59 +39,89 @@ export default function Home() {
       const data = await res.json();
       setMessages([...newMessages, { role: 'assistant', content: data.message }]);
     } catch (e) {
-      setMessages([...newMessages, { role: 'assistant', content: 'Signal lost... 🕯️' }]);
+      setMessages([...newMessages, { role: 'assistant', content: 'The signal is breaking. 🕯️' }]);
     } finally {
       setLoading(false);
     }
   };
 
-  // --- UI LANDING PAGE ---
+  // --- UI LANDING PAGE V2.0 (THE FORGE) ---
   if (!hasEntered) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-[#020205] text-white font-sans p-6 overflow-hidden relative">
-        {/* Background Stars */}
-        <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: 'radial-gradient(white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+        {/* Background Effects: Scanning Line */}
+        <div className="absolute inset-0 pointer-events-none opacity-5" style={{ backgroundImage: 'linear-gradient(0deg, transparent 50%, rgba(0, 255, 65, 0.1) 50%)', backgroundSize: '100% 4px' }}></div>
+        <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #1a1a1a 0%, #020205 100%)' }}></div>
         
-        <div className="z-10 flex flex-col items-center max-w-lg text-center space-y-8">
-          <div className="relative">
-            <div className="absolute inset-0 bg-purple-600 blur-3xl opacity-20 animate-pulse"></div>
-            <img src={SIGGY_AVATAR} className="w-32 h-32 rounded-full border-2 border-purple-500/50 shadow-[0_0_30px_rgba(168,85,247,0.4)] relative z-10" />
+        <div className="z-10 flex flex-col items-center max-w-lg w-full text-center space-y-12 relative">
+          
+          {/* Main Siggy Reactor Core */}
+          <div className="relative group">
+            {/* Glowing Neon Rings */}
+            <div className="absolute inset-[-15px] bg-[#ff003c] blur-3xl opacity-20 group-hover:opacity-40 animate-pulse rounded-full transition-opacity"></div>
+            <div className="absolute inset-[-5px] bg-[#ffea00] blur-xl opacity-10 rounded-full"></div>
+            
+            {/* Avatar with Metallic Frame */}
+            <div className="relative z-10 p-1.5 bg-black rounded-full border border-gray-800 shadow-[0_0_50px_rgba(255,0,60,0.15)]">
+              <img src={SIGGY_AVATAR} className="w-36 h-36 rounded-full border-2 border-[#ffea00]/30 object-cover relative z-10 shadow-[0_0_20px_#ff003c]" />
+              <div className="absolute inset-[-1px] rounded-full border border-[#ff003c] opacity-30 animate-pulse"></div>
+            </div>
+            
+            {/* Status Indicator */}
+            <div className="absolute bottom-[-10px] left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1 bg-black border border-[#00ff41]/30 rounded-full shadow-[0_0_15px_#00ff41]">
+              <div className="w-1.5 h-1.5 bg-[#00ff41] rounded-full animate-pulse"></div>
+              <p className="text-[7px] font-black text-[#00ff41] uppercase tracking-[0.4em]">Ready</p>
+            </div>
           </div>
 
-          <div className="space-y-2">
-            <p className="text-[10px] tracking-[0.4em] uppercase text-purple-400 font-bold">Meet</p>
-            <h1 className="text-6xl font-black text-white tracking-tighter italic">Siggy</h1>
-            <p className="text-sm text-gray-400 font-light">
-              A multi-dimensional cosmic cat from the <span className="text-purple-400 font-bold">Ritual Network</span> multiverse
+          {/* Title and Vision */}
+          <div className="space-y-3 relative">
+            <p className="text-[9px] tracking-[0.5em] uppercase text-gray-500 font-bold">Unlocking Expressive Computation</p>
+            <h1 className="text-7xl font-black text-white tracking-tighter italic uppercase leading-none" style={{ textShadow: '0 0 10px #ffea00, 0 0 20px #ff003c' }}>
+              Siggy <span className="text-[#ff003c]">Alt</span>
+            </h1>
+            <p className="text-xs text-gray-400 font-light max-w-sm mx-auto leading-relaxed">
+              Your direct node to the <span className="text-white font-bold">Ritual Network</span>. Expressive Trustless Computation at the intersection of Crypto & AI.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-3 w-full">
-            <div className="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center gap-4 text-left hover:bg-white/10 transition-all">
-              <span className="text-2xl">🤖</span>
+          {/* Feature Grid with Neon Glow */}
+          <div className="grid grid-cols-2 gap-4 w-full">
+            <div className="bg-[#08080a] border border-gray-800/50 p-5 rounded-xl flex items-center gap-4 text-left hover:border-[#00ff41]/40 hover:bg-[#00ff41]/5 transition-all group">
+              <span className="text-3xl opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all">🧠</span>
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider">Llama 3.3 Engine</h3>
-                <p className="text-[10px] text-gray-400">Powered by Groq for lightning-fast mystical reasoning.</p>
+                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#00ff41]">Groq Engine</h3>
+                <p className="text-[9px] text-gray-500 group-hover:text-white/80 transition-colors">Decoding signals with Llama 3.3 in the void.</p>
               </div>
             </div>
-            <div className="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center gap-4 text-left hover:bg-white/10 transition-all">
-              <span className="text-2xl">⛓️</span>
+            <div className="bg-[#08080a] border border-gray-800/50 p-5 rounded-xl flex items-center gap-4 text-left hover:border-[#ffea00]/40 hover:bg-[#ffea00]/5 transition-all group">
+              <span className="text-3xl opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all">⛓️</span>
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider">Ritual Knowledge</h3>
-                <p className="text-[10px] text-gray-400">Deep knowledge base about Infernet, EVM++, and more.</p>
+                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#ffea00]">Ritual Soul</h3>
+                <p className="text-[9px] text-gray-500 group-hover:text-white/80 transition-colors">Deep knowledge of Infernet, Symphony, and Resonance.</p>
               </div>
             </div>
           </div>
 
+          {/* Final Call to Action Tombol Gila */}
           <button 
             onClick={() => setHasEntered(true)}
-            className="group relative w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-[1.02] transition-all shadow-[0_10px_30px_rgba(139,92,246,0.3)]"
+            className="group relative w-full py-5 bg-[#ff003c] rounded-lg font-black uppercase tracking-[0.3em] text-[10px] hover:scale-[1.03] transition-all shadow-[0_15px_40px_rgba(255,0,60,0.3)] hover:shadow-[0_0_50px_rgba(255,234,0,0.4)]"
           >
-            Enter the Multiverse →
-            <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
+            <div className="relative z-10 flex items-center justify-center gap-2">
+              Sync with Multiverse
+              <span className="text-base group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+            {/* Tombol Neon Glow */}
+            <div className="absolute inset-0 bg-[#ffea00] opacity-0 group-hover:opacity-100 transition-opacity rounded-lg blur-xl"></div>
+            <div className="absolute inset-[-1px] rounded-lg border border-[#ff003c] animate-pulse"></div>
           </button>
           
-          <p className="text-[9px] text-gray-500 uppercase tracking-widest">Built with 💜 by Techies</p>
+          <div className="space-y-1 relative">
+            <p className="text-[8px] text-gray-600 uppercase tracking-widest">Built with precision for Siggy Soul Forge Quest</p>
+            <p className="text-[9px] text-white font-black uppercase tracking-widest italic" style={{ textShadow: '0 0 5px #00ff41' }}>Creator: Techies</p>
+          </div>
+
         </div>
       </div>
     );
@@ -100,11 +130,14 @@ export default function Home() {
   // --- UI CHATBOX (UI LAMA LO) ---
   return (
     <div className="flex h-screen bg-[#020203] text-[#00ff41] font-mono overflow-hidden">
-      {/* (Kodingan Chatbox Cyberpunk Lu yang Kemarin...) */}
       <div className="flex-1 flex flex-col h-full max-w-xl mx-auto border-x border-[#00ff41]/20 bg-[#020203]/90 backdrop-blur-sm relative z-10 shadow-[0_0_50px_rgba(0,255,65,0.05)]">
+        
         <header className="p-4 border-b border-[#00ff41]/20 flex justify-between items-center bg-black/50">
           <div className="flex items-center gap-3">
-            <img src={SIGGY_AVATAR} className="w-10 h-10 rounded-full border border-[#ff003c] object-cover" />
+            <div className="relative">
+              <div className="absolute inset-[-2px] bg-[#ff003c] blur-md opacity-40 rounded-full animate-pulse"></div>
+              <img src={SIGGY_AVATAR} className="w-10 h-10 rounded-full border border-[#ff003c] object-cover relative z-10" />
+            </div>
             <div>
               <h1 className="text-xs font-black tracking-widest text-white uppercase italic">Siggy.Soul_Alt</h1>
               <p className="text-[8px] text-[#ffea00] uppercase font-bold tracking-[0.2em]">Creator: Techies</p>
@@ -116,7 +149,7 @@ export default function Home() {
           </div>
         </header>
 
-        <div ref={scrollRef} className="flex-1 overflow-y-auto p-5 space-y-7 pb-36 scrollbar-hide">
+        <div ref={scrollRef} className="flex-1 overflow-y-auto p-5 space-y-7 scrollbar-hide pb-36">
           {messages.map((m, i) => (
             <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div className={`max-w-[90%] px-4 py-3 rounded-md text-[13px] border ${m.role === 'user' ? 'bg-[#ff003c]/5 border-[#ff003c]/30 text-[#ffb3c1]' : 'bg-[#00ff41]/5 border-[#00ff41]/20 text-[#c7ffda]'}`}>
@@ -132,8 +165,16 @@ export default function Home() {
 
         <div className="p-4 absolute bottom-0 w-full bg-gradient-to-t from-black via-black to-transparent">
           <div className="bg-[#08080a] border border-[#00ff41]/20 rounded-lg flex p-2 gap-2 focus-within:border-[#ffea00]/50 shadow-[0_0_20px_rgba(0,255,65,0.05)] transition-all">
-            <input className="flex-1 bg-transparent px-3 py-2 outline-none text-xs text-[#ffea00]" placeholder="Execute command..." value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && sendMessage()} />
-            <button onClick={sendMessage} className="bg-[#ff003c] text-white font-black text-[9px] px-5 rounded-md uppercase hover:bg-[#ff1a4d]">Execute</button>
+            <input 
+              className="flex-1 bg-transparent px-3 py-2 outline-none text-xs text-[#ffea00] placeholder:text-[#ffea00]/20" 
+              placeholder="Execute command to the void..." 
+              value={input} 
+              onChange={(e) => setInput(e.target.value)} 
+              onKeyDown={(e) => e.key === 'Enter' && sendMessage()} 
+            />
+            <button onClick={sendMessage} className="bg-[#ff003c] text-white font-black text-[9px] px-5 rounded-md uppercase hover:bg-[#ff1a4d] transition-all shadow-[0_0_10px_#ff003c]">
+              Execute
+            </button>
           </div>
         </div>
       </div>
